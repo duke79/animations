@@ -4,10 +4,14 @@ import Sphere from './modules/sphere/Sphere';
 import HoverCar from './modules/hover-car/HoverCar';
 import { OrbitControls } from '@react-three/drei';
 import RaceTrack from './modules/race-track/RaceTrack';
+import { useRef } from 'react';
 
 function App() {
+  const canvasRef: any = useRef();
+
   return (
     <Canvas
+      ref={canvasRef}
       style={{ width: '100vw', height: '100vh' }}
       camera={{ fov: 75, position: [
         -1.6708526988139725,
@@ -31,7 +35,7 @@ function App() {
       <OrbitControls />
 
       {/* <Sphere position={[0, 0, 0]} /> */}
-      <HoverCar />
+      <HoverCar/>
       <RaceTrack/>
     </Canvas>
   )
