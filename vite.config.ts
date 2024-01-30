@@ -15,7 +15,7 @@ export default defineConfig({
   experimental: {
     renderBuiltUrl(filename) {
         // here we set the base url. You might have to change this for react:
-        return  '/animations/dist/' + filename;
+        return  '/animations/' + filename;
     }
   }
 })
