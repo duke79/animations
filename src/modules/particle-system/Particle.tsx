@@ -54,7 +54,7 @@ const Particle = ({ particles, currentParticle, GRAVITY }: ParticleProps) => {
     });
 
     return (
-        <Sphere args={[0.5, 16, 16]} ref={currentParticle.ref} position={currentParticle.initialPosition} />
+        <Sphere args={[0.05, 16, 16]} ref={currentParticle.ref} position={currentParticle.initialPosition} />
     );
 };
 

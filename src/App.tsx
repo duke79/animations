@@ -10,7 +10,7 @@ import ParticleSystem from './modules/particle-system/ParticleSystem';
 function App() {
   const canvasRef: any = useRef();
   const [hyperParams, setHyperParams] = useState({
-    GRAVITY: 0.0000001,
+    GRAVITY: 0.00000000001,
     BASE_MASS: 1.99,
     MASS_RANGE: 0.2,
     POSITION_RANGE: 5,
