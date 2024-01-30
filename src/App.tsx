@@ -5,6 +5,7 @@ import HoverCar from './modules/hover-car/HoverCar';
 import { OrbitControls } from '@react-three/drei';
 import RaceTrack from './modules/race-track/RaceTrack';
 import { useRef } from 'react';
+import ParticleSystem from './modules/particle-system/ParticleSystem';
 
 function App() {
   const canvasRef: any = useRef();
@@ -35,8 +36,9 @@ function App() {
       <OrbitControls />
 
       {/* <Sphere position={[0, 0, 0]} /> */}
-      <HoverCar/>
-      <RaceTrack/>
+      {/* <HoverCar/> */}
+      {/* <RaceTrack/> */}
+      <ParticleSystem/>
     </Canvas>
   )
 }
