@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://duke79.github.io/animations/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
