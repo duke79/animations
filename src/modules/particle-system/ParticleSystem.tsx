@@ -1,25 +1,48 @@
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
+import { Vector3 } from 'three';
 import Particle from './Particle';
 
-const POSITION_RANGE = 5;
-const GRAVITY = 0.0000001; // Gravitational constant
-const ParticleSystem = () => {
+export type ParticleRef = {
+    ref: React.RefObject<any>;
+    mass: number;
+    initialPosition: Vector3;
+};
+
+export type HyperParams = {
+    GRAVITY: number;
+    BASE_MASS: number;
+    MASS_RANGE: number;
+    POSITION_RANGE: number;
+};
+
+const ParticleSystem = ({ hyperParams }: {
+    hyperParams: HyperParams;
+}) => {
     const [particles, setParticles] = useState<any[]>([]);
 
     useEffect(() => {
-        for (let i = 0; i < 200; i++) {
-            setParticles((particles) => [...particles, createRef()]);
-        }
-    }, []);
+        const newParticles = Array.from({ length: 200 }, (_, index) => {
+            return {
+                ref: createRef(),
+                mass: hyperParams.BASE_MASS + Math.random() * hyperParams.MASS_RANGE,
+                initialPosition: new Vector3(
+                    Math.random() * hyperParams.POSITION_RANGE - hyperParams.POSITION_RANGE / 2,
+                    Math.random() * hyperParams.POSITION_RANGE - hyperParams.POSITION_RANGE / 2,
+                    Math.random() * hyperParams.POSITION_RANGE - hyperParams.POSITION_RANGE / 2
+                ),
+            };
+        });
+
+        setParticles(newParticles);
+    }, [hyperParams]);
 
     return (
         <>
             {particles.map((particle, index) => (
                 <Particle key={index}
-                    GRAVITY={GRAVITY}
+                    GRAVITY={hyperParams.GRAVITY}
                     particles={particles}
-                    meshRef={particle}
-                    initialPosition={[Math.random()*POSITION_RANGE, Math.random()*POSITION_RANGE, Math.random()*POSITION_RANGE]}/>
+                    currentParticle={particle} />
             ))}
         </>
     );
