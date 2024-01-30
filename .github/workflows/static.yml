@@ -41,7 +41,7 @@ jobs:
         run: npm i
 
       - name: Build
-        run: npm run deploy
+        run: npm run predeploy
 
       - name: List directory contents
         run: ls -al
