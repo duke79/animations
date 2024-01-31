@@ -1,14 +1,15 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useLoader, useFrame } from '@react-three/fiber';
+import { useFrame, useLoader } from '@react-three/fiber';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { ASSETS } from '../../assets/assets';
 
 interface HoverCarProps {
     scale: number;
 }
 
 const HoverCar = (props: HoverCarProps) => {
-    const gltf = useLoader(GLTFLoader, '/assets/3d/free_cyberpunk_hovercar.glb');
+    const gltf = useLoader(GLTFLoader, ASSETS.hoverCar);
     const carRef = useRef<THREE.Object3D>(null);
     const [direction, setDirection] = useState(new THREE.Vector3(1, 0, 0));
     const [speed, setSpeed] = useState(0.001);

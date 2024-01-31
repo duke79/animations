@@ -1,16 +1,5 @@
 import { Link } from "react-router-dom";
-import HoverCarPage from "./HoverCarPage";
-import ParticleSystemPage from "./ParticleSystemPage";
-
-export const pathPrefix = process.env.NODE_ENV === 'production' ? '/animations/' : '/';
-
-export const pages = [{
-    name: 'hover-car',
-    component: HoverCarPage,
-}, {
-    name: 'particle-system',
-    component: ParticleSystemPage,
-}];
+import { pages, pathPrefix } from "../routes";
 
 const HomgePage = () => {
     return <div style={{

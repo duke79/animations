@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import HomgePage, { pages, pathPrefix } from './HomePage';
+import HomgePage from './HomePage';
+import { pages, pathPrefix } from '../routes';
 
 const Pages = () => {
     return (
