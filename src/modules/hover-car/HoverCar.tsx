@@ -3,19 +3,21 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useLoader, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-interface HoverCarProps { }
+interface HoverCarProps {
+    scale: number;
+}
 
 const HoverCar = (props: HoverCarProps) => {
     const gltf = useLoader(GLTFLoader, 'src/assets/3d/free_cyberpunk_hovercar.glb');
     const carRef = useRef<THREE.Object3D>(null);
     const [direction, setDirection] = useState(new THREE.Vector3(1, 0, 0));
-    const [speed, setSpeed] = useState(0.004);
+    const [speed, setSpeed] = useState(0.001);
     const [position, setPosition] = useState<THREE.Vector3>(new THREE.Vector3(0, 0, 0));
     const updateCar = useCallback((direction: THREE.Vector3) => {
         setPosition((position) => {
             const newPosition = position.clone().add(direction.clone().multiplyScalar(speed));
             gltf.scene.position.copy(newPosition);
-            gltf.scene.rotation.y = Math.atan2(direction.z, direction.x) - Math.PI / 2;
+            gltf.scene.rotation.y = - Math.atan2(direction.z, direction.x) + Math.PI / 2;
             return newPosition;
         });
     }, [speed]);
@@ -24,9 +26,9 @@ const HoverCar = (props: HoverCarProps) => {
             // set direction
             const newDirection = direction.clone();
             if (side === 'LEFT') {
-                newDirection.applyAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI / 50);
+                newDirection.applyAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI / 20);
             } else {
-                newDirection.applyAxisAngle(new THREE.Vector3(0, 1, 0), -Math.PI / 50);
+                newDirection.applyAxisAngle(new THREE.Vector3(0, 1, 0), -Math.PI / 20);
             }
             return newDirection;
         });
@@ -39,7 +41,7 @@ const HoverCar = (props: HoverCarProps) => {
     useEffect(() => {
         if (carRef.current) {
             // scale to 0.04
-            carRef.current.scale.set(0.04, 0.04, 0.04);
+            carRef.current.scale.set(props.scale, props.scale, props.scale);
         }
     }, [carRef.current]);
 
