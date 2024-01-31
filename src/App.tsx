@@ -93,8 +93,8 @@ function App() {
         ref={canvasRef}
         style={{ width: '100vw', height: '100vh' }}
         camera={{
-          fov: 75, position: [
-            -1.6708526988139725,
+          fov: 2, position: [
+            -80.6708526988139725,
             0.8120617796947767,
             0.17087966575176392
           ],
