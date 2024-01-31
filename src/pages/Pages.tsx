@@ -1,7 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import HomgePage, { pages } from './HomePage';
-
-const pathPrefix = process.env.NODE_ENV === 'production' ? '/animations/' : '/';
+import HomgePage, { pages, pathPrefix } from './HomePage';
 
 const Pages = () => {
     return (

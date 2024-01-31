@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import HoverCarPage from "./HoverCarPage";
 import ParticleSystemPage from "./ParticleSystemPage";
 
+export const pathPrefix = process.env.NODE_ENV === 'production' ? '/animations/' : '/';
+
 export const pages = [{
     name: 'hover-car',
     component: HoverCarPage,
@@ -17,7 +19,7 @@ const HomgePage = () => {
         gap: '10px',
     }}>
         {pages.map((page) => (
-            <Link to={`/${page.name}`} key={page.name} style={{
+            <Link to={`${pathPrefix}${page.name}`} key={page.name} style={{
                 padding: '20px',
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 color: 'white',
